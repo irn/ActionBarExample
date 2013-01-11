@@ -5,6 +5,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     
+    <!-- Preferences -->
+    <string name="pref_file_name">happieapp_prefs</string>
+    <string name="pref_company_id">prefs_company_id</string>
+    
     <string name="welcome_text">Welcome</string>
 
 </resources>
