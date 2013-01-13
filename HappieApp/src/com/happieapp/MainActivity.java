@@ -14,10 +14,11 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		SharedPreferences preferences = getSharedPreferences(getString(R.string.pref_file_name), Context.MODE_PRIVATE);
-		int companyId = preferences.getInt(getString(R.string.pref_company_id), 0);
+//		preferences.edit().putString(getString(R.string.pref_company_id), "3").commit();
+		String companyId = preferences.getString(getString(R.string.pref_company_id), null);
 		Intent nextActivity = null;
-		if (companyId == 0){
-			nextActivity = new Intent(this, HappieAppActivity.class);
+		if (companyId != null){
+			nextActivity = new Intent(this, HappieActivity.class);
 		} else {
 			nextActivity = new Intent(this, WelcomeActivity.class);
 		}

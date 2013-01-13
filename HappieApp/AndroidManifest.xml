@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.happieapp"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="5"
+    android:versionName="1.3"
+    android:installLocation="preferExternal" >
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="16" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:name=".HappieApplication" >
+        <uses-library android:name="com.google.android.maps" />
         <activity
-            android:name="com.happieapp.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:noHistory="true" >
             <intent-filter>
@@ -23,9 +29,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.happieapp.HappieActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.happieapp.WelcomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.happieapp.HappieMapActivity"
+            android:label="@string/title_activity_map" >
+        </activity>
         
-        <activity android:name=".HappieAppActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".WelcomeActivity" android:screenOrientation="portrait"/>
+        <receiver android:name=".ApplicationReceiver" android:exported="true">
+            <intent-filter >
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        
     </application>
 
 </manifest>
